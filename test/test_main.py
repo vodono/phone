@@ -37,7 +37,10 @@ def test_returned_numbers():
         create_table(conn)
         insert_dummy_numbers(conn)
 
+        # test if only one item meet input
         assert select_numbers_first_digits(conn, '380509') == [380509874561]
+
+        # test if more than maximum number_to_select meet input
         assert select_numbers_first_digits(conn, '38') == [
             380676586587,
             380676586589,
@@ -50,5 +53,9 @@ def test_returned_numbers():
             380676534867,
             380676534868,
         ]
+
+        # test if there are no items that meet input
         assert select_numbers_first_digits(conn, '1') == []
+
+        # test if quantity of digits entered are more than number size possible
         assert select_numbers_first_digits(conn, '3806765865871') == []

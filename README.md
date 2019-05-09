@@ -21,8 +21,7 @@ In: 380983
 Out: [380983567721]
 
 ## Using
-Репозиторий: https://github.com/vodono/filex
-Деплой проекта: https://fileex.herokuapp.com/
+Репозиторий: https://github.com/vodono/phone
 
 #### Для запуска проекта локально нужно:
 1) создать виртуальное окружение Python и активировать его:
@@ -34,41 +33,13 @@ Out: [380983567721]
     ```linux
     $ pip install -r requirements.txt
     ``` 
-1) создать базу Postgres в консоли саймой БД:
-    ```sql
-     # create role filex with createdb createrole login encrypted password 'files';
-     # create database files with owner=filex encoding=UTF8;
-    ```
-1) применить миграции к созданной БД в терминале ОС в папке проекта file_ex:
+1) запустить программу в папке проекта phone:
     ```linux
-    $ python src/manage.py upgrade
+    $ python src/main.py
     ```
-1) запустить веб-серверв терминале ОС в папке проекта file_ex:
-    ```linux
-    $ python src/local_run.py
-    ```
-1) локальный веб-сайт будет доступен по адресу http://127.0.0.1:5000/
+1) для выхода из программы нужно ввести: "exit"
 
-#### Для запуска проекта на сайте heroku.com:
-1) создать аккаунт на heroku.com установить консоль:
+1) запустить тесты в папке проекта phone:
     ```linux
-    $ sudo snap install --classic heroku
+    $ pytest
     ```
-1) создать проект (название может быть не доступно):
-    ```linux
-    $ heroku apps:create fileex
-    ```
-1) через команды git сохранить проект на remote (heroku or other, данный проект подключен к своему аккаунту github):
-    ```linux
-    $ git push heroku master
-    ```
-1) добавляем postgres:
-    ```linux
-    $ heroku addons:create heroku-postgresql:hobby-dev --app fileex
-    ```
-1) применить миграции:
-    ```linux
-    $ heroku run python src/manage.py db upgrade --app fileex
-    ```
-1) сайт доступен по адресу: https://fileex.herokuapp.com/
-а
